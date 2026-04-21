@@ -91,6 +91,7 @@ GEM
     ffi (1.17.4)
     globalid (1.3.0)
       activesupport (>= 6.1)
+    htmlbeautifier (1.4.3)
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.0)
@@ -253,6 +254,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (= 1.12.0)
   capybara (= 3.37.1)
+  htmlbeautifier
   importmap-rails (= 1.1.0)
   jbuilder (= 2.11.5)
   pg
