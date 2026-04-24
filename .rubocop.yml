@@ -1,1 +1,188 @@
-inherit_from: .rubocop_todo.yml
+# .rubocop.yml
+# Based on RuboCop 1.86 official documentation
+# https://docs.rubocop.org/rubocop/latest/configuration.html
+
+require:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rspec  # remove if not using RSpec
+
+AllCops:
+  TargetRubyVersion: 3.3  # adjust to your Ruby version
+  NewCops: enable          # enable new cops as they are introduced
+  SuggestExtensions: false
+  Exclude:
+    - 'bin/**/*'
+    - 'db/schema.rb'
+    - 'db/migrate/**/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - 'log/**/*'
+    - 'config/boot.rb'
+    - 'config/environment.rb'
+    - 'config/initializers/assets.rb'
+
+# ─── Layout ────────────────────────────────────────────────────────────────────
+
+Layout/LineLength:
+  Max: 120
+  AutoCorrect: true
+  AllowedPatterns:
+    - '\A\s*#'   # allow long comment lines
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: space
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
+# ─── Style ─────────────────────────────────────────────────────────────────────
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+  ConsistentQuotesInMultiline: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+Style/Documentation:
+  Enabled: false   # class/module doc comments — disable if too noisy
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/HashSyntax:
+  EnforcedStyle: ruby19              # { key: value } over { :key => value }
+  EnforcedShorthandSyntax: always    # Ruby 3.1+ shorthand { x: } over { x: x }
+
+Style/SymbolArray:
+  EnforcedStyle: percent   # %i[foo bar] over [:foo, :bar]
+
+Style/WordArray:
+  EnforcedStyle: percent   # %w[foo bar] over ['foo', 'bar']
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: nested
+
+Style/Lambda:
+  EnforcedStyle: literal   # -> over lambda
+
+Style/BlockDelimiters:
+  EnforcedStyle: line_count_based  # do/end for multi-line, {} for single-line
+
+Style/GuardClause:
+  MinBodyLength: 3
+
+# ─── Metrics ───────────────────────────────────────────────────────────────────
+
+Metrics/MethodLength:
+  Max: 20
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+
+Metrics/ClassLength:
+  Max: 200
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+
+Metrics/BlockLength:
+  Max: 30
+  AllowedMethods:
+    - describe
+    - context
+    - shared_examples
+    - shared_context
+    - it
+    - before
+    - after
+    - let
+    - let!
+    - factory
+    - configure
+  Exclude:
+    - 'spec/**/*'
+    - 'config/routes.rb'
+    - 'config/environments/**/*'
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/CyclomaticComplexity:
+  Max: 8
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+# ─── Naming ────────────────────────────────────────────────────────────────────
+
+Naming/VariableNumber:
+  EnforcedStyle: normalcase   # foo_1 over foo1
+
+Naming/PredicateName:
+  AllowedMethods:
+    - is_a?
+
+# ─── Lint ──────────────────────────────────────────────────────────────────────
+
+Lint/AmbiguousBlockAssociation:
+  AllowedMethods:
+    - expect    # common in RSpec
+
+Lint/UnusedMethodArgument:
+  AllowUnderscore: true
+
+# ─── Rails ─────────────────────────────────────────────────────────────────────
+
+Rails:
+  Enabled: true
+
+Rails/FilePath:
+  EnforcedStyle: slashes
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - staging
+    - development
+    - test
+
+Rails/OutputSafety:
+  Enabled: true
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: true
+
+# ─── Performance ───────────────────────────────────────────────────────────────
+
+Performance:
+  Enabled: true
+
+Performance/CollectionLiteralInLoop:
+  Enabled: true
+
+Performance/StringReplacement:
+  Enabled: true
