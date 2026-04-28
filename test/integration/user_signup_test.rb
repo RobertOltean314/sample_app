@@ -18,5 +18,6 @@ class UserSignupTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_response :ok
+    assert logged_in?
   end
 end
