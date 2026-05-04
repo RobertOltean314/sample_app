@@ -62,4 +62,9 @@ class LogoutTest < Logout
     follow_redirect!
     assert_response :ok
   end
+
+  test 'should still work after logout in a second window' do
+    delete logout_path
+    assert_redirected_to root_url
+  end
 end

@@ -1,9 +1,5 @@
-<%= @user.name %>,
-<br>
-<%= @user.email %>
-<br>
-<%= @user.created_at %>
-<br>
-<%= @user.updated_at %>
-<%= Time.now %>
+<%= provide(:title, @user.name) %>
+<h1><%= @user.name %></h1>
 
+<p>Email: <%= @user.email %></p>
+<p>Joined: <%= @user.created_at %></p>

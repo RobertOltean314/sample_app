@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) || "Sample App" %></title>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <nav>
+      <%= link_to "Home", root_path %> |
+      <%= link_to "Help", help_path %> |
+      <%= link_to "About", about_path %> |
+      <% if logged_in? %>
+        <%= link_to "Profile", current_user %> |
+        <%= link_to "Users", users_path %> |
+        <%= button_to "Log out", logout_path, method: :delete %>
+      <% else %>
+        <%= link_to "Log in", login_path %> |
+        <%= link_to "Sign up", signup_path %>
+      <% end %>
+    </nav>
+
+    <% flash.each do |type, message| %>
+      <p>[<%= type %>] <%= message %></p>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>
