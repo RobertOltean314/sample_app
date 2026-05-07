@@ -7,6 +7,8 @@ ruby '3.1.2'
 
 gem 'bcrypt'
 gem 'bootsnap', '1.12.0', require: false
+gem 'bootstrap-will_paginate', '1.0.0'
+gem 'faker'
 gem 'importmap-rails', '1.1.0'
 gem 'jbuilder', '2.11.5'
 gem 'puma', '5.6.4'
@@ -17,12 +19,14 @@ gem 'sassc-rails', '2.1.2'
 gem 'sprockets-rails', '3.4.2'
 gem 'stimulus-rails', '1.0.4'
 gem 'turbo-rails', '1.1.1'
+gem 'will_paginate', '3.3.0'
 
 group :development, :test do
   gem 'sqlite3', '1.4.2'
 end
 
 group :development do
+  gem 'rubocop-minitest', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false

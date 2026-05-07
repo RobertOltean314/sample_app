@@ -3,6 +3,7 @@
 # https://docs.rubocop.org/rubocop/latest/configuration.html
 
 require:
+  - rubocop-minitest
   - rubocop-rails
   - rubocop-performance
   - rubocop-rspec  # remove if not using RSpec

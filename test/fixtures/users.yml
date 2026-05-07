@@ -1,3 +1,9 @@
 robert:
+  name: robert
   email: robert@gmail.com
+  password_digest: <%= BCrypt::Password.create('parola1234') %>
+
+archer:
+  name: Sterling Archer
+  email: duchess@example.gov
   password_digest: <%= BCrypt::Password.create('parola1234') %>
